@@ -2,7 +2,7 @@
 
 ## News: 
 
-[by Runhua on 17 Dec 2025] Check our meet-up proposal at arXiv: https://arxiv.org/abs/2512.13000
+[by Runhua on 17 Dec 2025] Check our meet-up proposal at arXiv: [https://arxiv.org/abs/2512.13000](https://arxiv.org/abs/2512.13000)
 
 [by Runhua on 29 Nov 2025] Our meet-up proposal titled **Legitimizing, Developing, and Sustaining Feminist HCI in East Asia: Challenges and Opportunities**, was accepted to CHI'26. <mark> 🔥 We will develop more details on this page from early 2026</mark>.
 
