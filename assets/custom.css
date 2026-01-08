@@ -6,7 +6,7 @@
 .introduction-box {
   background-color: #fffced; /* light yellow */
   padding: 16px 20px;
-  margin: 20px 0 32px 0;
+  margin: 10px 0 20px 0;
   border-radius: 2px;
 }
 
@@ -25,9 +25,9 @@ html {
   scroll-behavior: smooth; /* 可选：平滑滚动 */
 }
 
-/* 固定在顶部的 header */
+/* 顶部 header */
 .site-header {
-  position: sticky; /* 想要始终固定也可改成 fixed */
+  position: sticky;
   top: 0;
   z-index: 999;
   background: rgba(255, 255, 255, 0.95);
@@ -35,7 +35,7 @@ html {
   border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
 
-/* header 内部布局：左 logo 右导航 */
+/* header 内部布局（桌面端：左 logo 右导航） */
 .site-header__inner {
   display: flex;
   align-items: center;
@@ -57,12 +57,19 @@ html {
   font-size: 16px;
 }
 
-/* 导航菜单 */
+/* 如果你用的是图片 logo（CHI26%20logo.png） */
+.site-logo__img {
+  height: 28px;
+  width: auto;
+  display: block;
+}
+
+/* 导航菜单（桌面端） */
 .site-nav {
   display: flex;
   align-items: center;
   gap: 14px;
-  flex-wrap: wrap;
+  flex-wrap: nowrap; /* 桌面端也不换行，避免偶发断行 */
 }
 
 .site-nav a {
@@ -71,13 +78,14 @@ html {
   font-size: 14px;
   padding: 6px 8px;
   border-radius: 6px;
+  flex: 0 0 auto; /* 不被压缩/不换行 */
 }
 
 .site-nav a:hover {
   background: rgba(0, 0, 0, 0.06);
 }
 
-/* 小屏幕下让导航更紧凑 */
+/* ===== Mobile: logo top + horizontal scroll menu ===== */
 @media (max-width: 720px) {
   .site-header__inner {
     height: auto;
@@ -88,10 +96,36 @@ html {
     gap: 8px;
   }
 
+  /* logo 稍微缩小一点更协调 */
+  .site-logo__img {
+    height: 26px;
+  }
+
+  /* 菜单单行横向滚动：不再出现掉到第二行的尴尬 */
   .site-nav {
-    gap: 8px;
+    width: 100%;
+    gap: 10px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch; /* iOS 更丝滑 */
+    padding-bottom: 2px;
+  }
+
+  .site-nav a {
+    font-size: 13px;
+    padding: 6px 8px;
+  }
+
+  /* 隐藏横向滚动条（更干净） */
+  .site-nav::-webkit-scrollbar {
+    display: none;
+  }
+  .site-nav {
+    scrollbar-width: none;
   }
 }
+
 
 /* ===== Prevent anchor jump being hidden under the header ===== */
 /* 56px header height + some spacing */
@@ -141,4 +175,67 @@ h1[id] {
 .markdown-body h2 {
   font-weight: 600;           /* 原来偏粗 */
   letter-spacing: 0.01em;
+}
+
+/* ===== Organizers grid ===== */
+
+.organizers-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 18px 14px; /* row gap, column gap */
+  margin-top: 14px;
+}
+
+/* 每个人的卡片 */
+.organizer-card {
+  text-align: center;
+}
+
+/* 圆形头像 */
+.organizer-avatar {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto 10px auto;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+/* 姓名链接（保持你原来的 URL） */
+.organizer-name {
+  display: inline-block;
+  font-weight: 700;
+  text-decoration: none;
+  line-height: 1.2;
+}
+
+.organizer-name:hover {
+  text-decoration: underline;
+}
+
+/* affiliation 文本 */
+.organizer-affiliation {
+  margin-top: 6px;
+  font-size: 13px;
+  line-height: 1.35;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+/* 响应式：屏幕窄时自动降列数 */
+@media (max-width: 1000px) {
+  .organizers-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .organizers-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .organizer-avatar {
+    width: 88px;
+    height: 88px;
+  }
 }
