@@ -1,0 +1,256 @@
+/* Custom styles for feminist-hci site
+   Keep this file for your own additions/overrides.
+*/
+
+/* Introduction highlight box (light yellow background) */
+.introduction-box {
+  background-color: #fffced; /* light yellow */
+  padding: 16px 20px;
+  margin: 10px 0 20px 0;
+  border-radius: 2px;
+}
+
+.introduction-box p {
+  margin-top: 0;
+  margin-bottom: 12px;
+}
+
+.introduction-box p:last-child {
+  margin-bottom: 0;
+}
+
+/* ===== Header / Navigation ===== */
+
+html {
+  scroll-behavior: smooth; /* 可选：平滑滚动 */
+}
+
+/* 顶部 header */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+/* header 内部布局（桌面端：左 logo 右导航） */
+.site-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 56px;
+}
+
+/* logo */
+.site-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: inherit;
+  font-weight: 700;
+}
+
+.site-logo__text {
+  font-size: 16px;
+}
+
+/* 如果你用的是图片 logo（CHI26%20logo.png） */
+.site-logo__img {
+  height: 28px;
+  width: auto;
+  display: block;
+}
+
+/* 导航菜单（桌面端） */
+.site-nav {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: nowrap; /* 桌面端也不换行，避免偶发断行 */
+}
+
+.site-nav a {
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 6px 8px;
+  border-radius: 6px;
+  flex: 0 0 auto; /* 不被压缩/不换行 */
+}
+
+.site-nav a:hover {
+  background: rgba(0, 0, 0, 0.06);
+}
+
+/* ===== Mobile: logo top + horizontal scroll menu ===== */
+@media (max-width: 720px) {
+  .site-header__inner {
+    height: auto;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  /* logo 稍微缩小一点更协调 */
+  .site-logo__img {
+    height: 26px;
+  }
+
+  /* 菜单单行横向滚动：不再出现掉到第二行的尴尬 */
+  .site-nav {
+    width: 100%;
+    gap: 10px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch; /* iOS 更丝滑 */
+    padding-bottom: 2px;
+  }
+
+  .site-nav a {
+    font-size: 13px;
+    padding: 6px 8px;
+  }
+
+  /* 隐藏横向滚动条（更干净） */
+  .site-nav::-webkit-scrollbar {
+    display: none;
+  }
+  .site-nav {
+    scrollbar-width: none;
+  }
+}
+
+
+/* ===== Prevent anchor jump being hidden under the header ===== */
+/* 56px header height + some spacing */
+h2[id],
+h1[id] {
+  scroll-margin-top: 72px;
+}
+
+/* Logo image in header */
+.site-logo__img {
+  height: 28px;       /* 推荐高度，可调 24–32 */
+  width: auto;
+  display: block;
+}
+
+
+/* News: max height + internal scroll */
+.news-box {
+  max-height: 220px;          /* 你可以改成 200/260/300，看你想要多高 */
+  overflow-y: auto;
+  padding: 12px 14px;
+  border-radius: 2px;
+  background: rgba(0, 0, 0, 0.02);
+}
+
+/* 让段落在容器里更紧凑一点 */
+.news-box p {
+  margin-top: 0;
+  margin-bottom: 12px;
+}
+
+.news-box p:last-child {
+  margin-bottom: 0;
+}
+
+/* ===== Section heading (h2) refinement ===== */
+
+/* 调小 h2 字号 + 去掉底部横线 */
+.markdown-body h2 {
+  font-size: 1.3rem;          /* 原来大约是 1.75rem，可改 1.3–1.45 */
+  border-bottom: none;        /* 去掉主题自带的横线 */
+  padding-bottom: 0;          /* 去掉为横线预留的空间 */
+  margin-bottom: 0.6em;       /* 控制 h2 和正文的距离 */
+}
+
+/* 可选：让 h2 看起来更“学术/克制”一点 */
+.markdown-body h2 {
+  font-weight: 600;           /* 原来偏粗 */
+  letter-spacing: 0.01em;
+}
+
+/* ===== Organizers grid ===== */
+
+.organizers-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 18px 14px; /* row gap, column gap */
+  margin-top: 14px;
+}
+
+/* 每个人的卡片 */
+.organizer-card {
+  text-align: center;
+}
+
+/* 圆形头像 */
+.organizer-avatar {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto 10px auto;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+/* 姓名链接（保持你原来的 URL） */
+.organizer-name {
+  display: inline-block;
+  font-weight: 700;
+  text-decoration: none;
+  line-height: 1.2;
+}
+
+.organizer-name:hover {
+  text-decoration: underline;
+}
+
+/* affiliation 文本 */
+.organizer-affiliation {
+  margin-top: 6px;
+  font-size: 13px;
+  line-height: 1.35;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+/* 响应式：屏幕窄时自动降列数 */
+@media (max-width: 1000px) {
+  .organizers-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .organizers-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .organizer-avatar {
+    width: 88px;
+    height: 88px;
+  }
+}
+
+/* ===== Footer ===== */
+
+.site-footer {
+  margin-top: 60px;
+  padding: 24px 16px;
+  text-align: center;
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.55);
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.site-footer p {
+  margin: 0;
+}
