@@ -1,0 +1,539 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Feminist HCI — Resources</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #faf9f7;
+  --surface: #ffffff;
+  --text: #1a1714;
+  --muted: #6b6460;
+  --accent: #c0392b;
+  --accent-soft: rgba(192,57,43,.08);
+  --border: rgba(26,23,20,.1);
+  --border-strong: rgba(26,23,20,.18);
+  --shadow-sm: 0 1px 4px rgba(26,23,20,.06);
+  --shadow: 0 4px 20px rgba(26,23,20,.08);
+  --shadow-lg: 0 12px 40px rgba(26,23,20,.12);
+  --radius: 4px;
+  --radius-lg: 12px;
+  --max: 1020px;
+  --serif: 'DM Serif Display', Georgia, serif;
+  --sans: 'DM Sans', system-ui, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+
+body {
+  font-family: var(--sans);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* ── Subtle texture overlay ── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+  opacity: 0.4;
+}
+
+.container { max-width: var(--max); margin: 0 auto; padding: 0 28px; position: relative; z-index: 1; }
+
+/* ── Links ── */
+a { color: var(--accent); text-decoration: none; transition: opacity .15s; }
+a:hover { opacity: .75; text-decoration: underline; text-underline-offset: 3px; }
+
+/* ── Navbar ── */
+.nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(250,249,247,.94);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px 0;
+}
+.brand {
+  font-family: var(--serif);
+  font-size: 20px;
+  color: var(--text);
+  letter-spacing: .2px;
+  text-decoration: none;
+}
+.brand:hover { opacity: 1; text-decoration: none; }
+.nav-links a {
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: .3px;
+  color: var(--muted);
+  padding: 6px 14px;
+  border-radius: 999px;
+  margin-left: 2px;
+  transition: background .15s, color .15s;
+}
+.nav-links a:hover, .nav-links a.active {
+  background: var(--accent-soft);
+  color: var(--accent);
+  text-decoration: none;
+  opacity: 1;
+}
+
+/* ── Hero ── */
+.hero {
+  padding: 64px 0 0;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 56px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.hero-eyebrow {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 14px;
+}
+.hero h1 {
+  font-family: var(--serif);
+  font-size: clamp(42px, 6vw, 72px);
+  line-height: 1.05;
+  letter-spacing: -1px;
+  margin: 0 0 28px;
+  max-width: 14ch;
+}
+.hero h1 em {
+  font-style: italic;
+  color: var(--muted);
+}
+
+/* ── Section headings ── */
+.section-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0 0 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.section-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+  display: block;
+}
+
+/* ── Featured paper ── */
+.featured-paper {
+  margin-bottom: 64px;
+}
+.paper-card {
+  background: var(--surface);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-lg);
+  padding: 36px;
+  box-shadow: var(--shadow);
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 32px;
+  align-items: start;
+  position: relative;
+  overflow: hidden;
+}
+.paper-card::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: var(--accent);
+  border-radius: 0 2px 2px 0;
+}
+.paper-meta {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: .5px;
+  color: var(--muted);
+  text-transform: uppercase;
+  margin: 0 0 10px;
+}
+.paper-title {
+  font-family: var(--serif);
+  font-size: 24px;
+  line-height: 1.25;
+  margin: 0 0 14px;
+}
+.paper-title a {
+  color: var(--text);
+  text-decoration: none;
+}
+.paper-title a:hover {
+  color: var(--accent);
+  opacity: 1;
+  text-decoration: none;
+}
+.paper-abstract {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--muted);
+  margin: 0;
+}
+.paper-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--accent);
+  border: 1px solid rgba(192,57,43,.25);
+  padding: 8px 16px;
+  border-radius: 999px;
+  white-space: nowrap;
+  transition: background .15s;
+  flex-shrink: 0;
+}
+.paper-cta:hover {
+  background: var(--accent-soft);
+  text-decoration: none;
+  opacity: 1;
+}
+.paper-cta svg { flex-shrink: 0; }
+
+/* ── Book grid ── */
+.books-section { margin-bottom: 64px; }
+.book-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+@media (max-width: 860px) { .book-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 600px) { .book-grid { grid-template-columns: repeat(2, 1fr); } }
+
+.book-card {
+  display: block;
+  text-decoration: none;
+  color: var(--text);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+  transition: transform .22s ease, box-shadow .22s ease;
+}
+.book-card:hover {
+  transform: translateY(-5px) scale(1.01);
+  box-shadow: var(--shadow-lg);
+  text-decoration: none;
+  opacity: 1;
+}
+.book-cover-wrap {
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  overflow: hidden;
+  background: #e8e4df;
+  position: relative;
+}
+.book-cover-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform .35s ease;
+}
+.book-card:hover .book-cover-wrap img {
+  transform: scale(1.04);
+}
+.book-info {
+  padding: 12px 14px 14px;
+  border-top: 1px solid var(--border);
+}
+.book-title {
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.35;
+  margin: 0 0 4px;
+}
+.book-author {
+  font-size: 12px;
+  color: var(--muted);
+  font-style: italic;
+}
+
+/* ── Channels ── */
+.channels-section { margin-bottom: 64px; }
+.channel-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+@media (max-width: 600px) { .channel-list { grid-template-columns: 1fr; } }
+
+.channel-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 24px 28px;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow .2s, border-color .2s;
+  text-decoration: none;
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.channel-card:hover {
+  box-shadow: var(--shadow);
+  border-color: rgba(192,57,43,.3);
+  text-decoration: none;
+  opacity: 1;
+}
+.channel-type {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.channel-name {
+  font-family: var(--serif);
+  font-size: 20px;
+  line-height: 1.2;
+}
+.channel-arrow {
+  margin-top: 8px;
+  font-size: 18px;
+  color: var(--muted);
+  transition: transform .2s;
+}
+.channel-card:hover .channel-arrow {
+  transform: translateX(4px);
+  color: var(--accent);
+}
+
+/* ── Footer ── */
+.footer {
+  border-top: 1px solid var(--border);
+  padding: 28px 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+/* ── Animations ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.hero, .featured-paper, .books-section, .channels-section {
+  animation: fadeUp .55s ease both;
+}
+.featured-paper { animation-delay: .1s; }
+.books-section  { animation-delay: .18s; }
+.channels-section { animation-delay: .26s; }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="container nav-inner">
+    <a class="brand" href="index.html">Feminist HCI</a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="index.html">Home</a>
+      <a href="events.html">Events</a>
+      <a class="active" href="resources.html">Resources</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+
+  <section class="hero">
+    <p class="hero-eyebrow">Reading List</p>
+    <h1>Resources &amp; <em>references</em></h1>
+  </section>
+
+  <!-- Featured paper -->
+  <section class="featured-paper">
+    <p class="section-label">Featured paper</p>
+    <div class="paper-card">
+      <div>
+        <p class="paper-meta">Shaowen Bardzell &nbsp;·&nbsp; CHI 2010</p>
+        <h2 class="paper-title">
+          <a href="https://dl.acm.org/doi/pdf/10.1145/1753326.1753521" target="_blank" rel="noopener">
+            Feminist HCI: taking stock and outlining an agenda for design
+          </a>
+        </h2>
+        <p class="paper-abstract">
+          Feminism is a natural ally to interaction design, due to its central commitments to issues such as agency, fulfillment, identity, equity, empowerment, and social justice. In this paper, I summarize the state of the art of feminism in HCI and propose ways to build on existing successes to more robustly integrate feminism into interaction design research and practice. I explore the productive role of feminism in analogous fields, such as industrial design, architecture, and game design. I introduce examples of feminist interaction design already in the field. Finally, I propose a set of feminist interaction design qualities intended to support design and evaluation processes directly as they unfold.
+        </p>
+      </div>
+      <a class="paper-cta" href="https://dl.acm.org/doi/pdf/10.1145/1753326.1753521" target="_blank" rel="noopener">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Read PDF
+      </a>
+    </div>
+  </section>
+
+  <!-- Books -->
+  <section class="books-section">
+    <p class="section-label">Books &amp; foundational texts</p>
+    <div class="book-grid">
+
+      <a class="book-card" href="https://www.cornellpress.cornell.edu/book/9780801418808/the-science-question-in-feminism/#bookTabs=1" target="_blank" rel="noopener">
+        <div class="book-cover-wrap">
+          <img src="assets/The_Science_Question_in_Feminism.avif" alt="The Science Question in Feminism cover">
+        </div>
+        <div class="book-info">
+          <div class="book-title">The Science Question in Feminism</div>
+          <div class="book-author">Sandra Harding</div>
+        </div>
+      </a>
+
+      <a class="book-card" href="https://www.jstor.org/stable/10.7591/j.ctt1hhfnmg" target="_blank" rel="noopener">
+        <div class="book-cover-wrap">
+          <img src="assets/Whose_Science.jpeg" alt="Whose Science? Whose Knowledge? cover">
+        </div>
+        <div class="book-info">
+          <div class="book-title">Whose Science? Whose Knowledge?</div>
+          <div class="book-author">Sandra Harding</div>
+        </div>
+      </a>
+
+      <a class="book-card" href="https://global.oup.com/academic/product/feminist-ai-9780192889898?cc=hk&lang=en&" target="_blank" rel="noopener">
+        <div class="book-cover-wrap">
+          <img src="assets/feminist_ai.jpg" alt="Feminist AI cover">
+        </div>
+        <div class="book-info">
+          <div class="book-title">Feminist AI</div>
+          <div class="book-author">Browne, Cave, Drage, McInerney</div>
+        </div>
+      </a>
+
+      <a class="book-card" href="https://www.jstor.org/stable/j.ctv11g9836" target="_blank" rel="noopener">
+        <div class="book-cover-wrap">
+          <img src="assets/living_a_feminist_life.jpeg" alt="Living a Feminist Life cover">
+        </div>
+        <div class="book-info">
+          <div class="book-title">Living a Feminist Life</div>
+          <div class="book-author">Sara Ahmed</div>
+        </div>
+      </a>
+
+      <a class="book-card" href="https://www.google.co.kr/books/edition/Who_s_Afraid_of_Gender/TDPGEAAAQBAJ?hl=en&gbpv=0" target="_blank" rel="noopener">
+        <div class="book-cover-wrap">
+          <img src="assets/whos_afraid_of_gender.png" alt="Who's Afraid of Gender? cover">
+        </div>
+        <div class="book-info">
+          <div class="book-title">Who's Afraid of Gender?</div>
+          <div class="book-author">Judith Butler</div>
+        </div>
+      </a>
+
+      <a class="book-card" href="https://direct.mit.edu/books/book/4660/Data-Feminism" target="_blank" rel="noopener">
+        <div class="book-cover-wrap">
+          <img src="assets/data_feminism.jpeg" alt="Data Feminism cover">
+        </div>
+        <div class="book-info">
+          <div class="book-title">Data Feminism</div>
+          <div class="book-author">D'Ignazio &amp; Klein</div>
+        </div>
+      </a>
+
+      <a class="book-card" href="https://www.jstor.org/stable/3178066?seq=1" target="_blank" rel="noopener">
+        <div class="book-cover-wrap">
+          <img src="assets/situated_knowledge.jpeg" alt="Situated Knowledges cover">
+        </div>
+        <div class="book-info">
+          <div class="book-title">Situated Knowledges</div>
+          <div class="book-author">Donna Haraway</div>
+        </div>
+      </a>
+
+      <a class="book-card" href="https://archive.org/details/384229360-250879476" target="_blank" rel="noopener">
+        <div class="book-cover-wrap">
+          <img src="assets/Marxism.jpg" alt="Marxism and the Oppression of Women cover">
+        </div>
+        <div class="book-info">
+          <div class="book-title">Marxism and the Oppression of Women</div>
+          <div class="book-author">Lise Vogel</div>
+        </div>
+      </a>
+
+      <a class="book-card" href="https://www.versobooks.com/products/774-feminism-for-the-99" target="_blank" rel="noopener">
+        <div class="book-cover-wrap">
+          <img src="assets/manifesto.jpg.webp" alt="Feminism for the 99% cover">
+        </div>
+        <div class="book-info">
+          <div class="book-title">Feminism for the 99%</div>
+          <div class="book-author">Arruzza, Bhattacharya, Fraser</div>
+        </div>
+      </a>
+
+      <a class="book-card" href="https://books.google.com/books?id=wXO2MAIJN4YC&printsec=frontcover" target="_blank" rel="noopener">
+        <div class="book-cover-wrap">
+          <img src="assets/suppress_women_writing.jpg" alt="How to Suppress Women's Writing cover">
+        </div>
+        <div class="book-info">
+          <div class="book-title">How to Suppress Women's Writing</div>
+          <div class="book-author">Joanna Russ</div>
+        </div>
+      </a>
+
+      <a class="book-card" href="https://www.mybookone.com.hk/page/detail_w/1928346663900278786/" target="_blank" rel="noopener">
+        <div class="book-cover-wrap">
+          <img src="assets/may_fourth_women.jpg" alt="五四女性 cover">
+        </div>
+        <div class="book-info">
+          <div class="book-title">五四女性</div>
+          <div class="book-author">王政</div>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- Channels -->
+  <section class="channels-section">
+    <p class="section-label">Relevant channels</p>
+    <div class="channel-list">
+
+      <a class="channel-card" href="https://chinesefeminism.org" target="_blank" rel="noopener">
+        <span class="channel-type">Community</span>
+        <span class="channel-name">Chinese Feminism</span>
+        <span class="channel-arrow">→</span>
+      </a>
+
+      <a class="channel-card" href="https://readymag.website/u2853933671/5588821/" target="_blank" rel="noopener">
+        <span class="channel-type">Workshop</span>
+        <span class="channel-name">The Feminist Theory Workshop</span>
+        <span class="channel-arrow">→</span>
+      </a>
+
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="container">© 2026 Feminist HCI</div>
+</footer>
+
+</body>
+</html>

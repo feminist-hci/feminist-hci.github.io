@@ -1,0 +1,244 @@
+:root{
+  --bg:#ffffff;
+  --panel:#f6f7f9;
+
+  --text:#111827;
+  --muted:#4b5563;
+
+  --border:rgba(17,24,39,.12);
+
+  --link:#2563eb;
+  --link-hover:#1d4ed8;
+
+  --shadow:0 10px 28px rgba(17,24,39,.08);
+
+  --radius:16px;
+  --max:980px;
+
+  --pad:20px;
+  --gap:16px;
+}
+
+/* Base */
+*{ box-sizing:border-box; }
+html,body{ margin:0; padding:0; }
+
+body{
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.container{
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Links */
+a{
+  color: var(--link);
+  text-decoration: none;
+}
+a:hover{
+  color: var(--link-hover);
+  text-decoration: underline;
+}
+
+/* Navbar */
+.nav{
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(255,255,255,.92);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-inner{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 0;
+}
+
+.brand{
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.2px;
+}
+
+.nav-links a{
+  display: inline-block;
+  padding: 8px 10px;
+  border-radius: 999px;
+  margin-left: 6px;
+  font-size: 15px;
+  color: var(--text);
+}
+
+.nav-links a.active,
+.nav-links a:hover{
+  background: rgba(37,99,235,.08);
+  text-decoration: none;
+}
+
+/* Hero */
+.hero{
+  padding: 48px 0 18px;
+}
+
+.hero h1{
+  font-size: 42px;
+  line-height: 1.12;
+  letter-spacing: -0.6px;
+  margin: 0 0 14px 0;
+}
+
+.lede{
+  max-width: 72ch;
+  margin: 0;
+  font-size: 18px;
+  color: var(--muted);
+}
+
+/* Buttons */
+.actions{ margin-top: 18px; }
+
+.btn{
+  display: inline-block;
+  padding: 10px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: #fff;
+  color: var(--text);
+  margin-right: 10px;
+}
+
+.btn:hover{
+  background: rgba(37,99,235,.05);
+  text-decoration: none;
+}
+
+.btn.primary{
+  background: #111827;
+  border-color: rgba(17,24,39,.28);
+  color: #fff;
+}
+
+.btn.primary:hover{
+  background: #0b1220;
+}
+
+/* Sections */
+.section{
+  padding: 24px 0;
+}
+
+.section h2{
+  margin: 0 0 12px 0;
+  font-size: 18px;
+  letter-spacing: -0.2px;
+}
+
+/* Grid */
+.grid-2{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--gap);
+}
+
+/* Cards */
+.card{
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: var(--pad);
+  box-shadow: var(--shadow);
+}
+
+/* News / event item */
+.news-item{
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px;
+  margin-bottom: 12px;
+}
+
+.news-item .date{
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+/* Footer */
+.footer{
+  margin-top: 40px;
+  padding: 20px 0;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 14px;
+}
+
+/* Book grid */
+.book-grid{
+  display: grid;
+  gap: 24px;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 24px;
+  padding: 10px;
+}
+
+@media (max-width: 900px){
+  .book-grid{ grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px){
+  .book-grid{ grid-template-columns: 1fr; }
+}
+
+.book-card{
+  display:block;
+  overflow:hidden;
+  border-radius: 12px;
+  background:#fff;
+  border: 1px solid var(--border);
+  box-shadow: 0 2px 8px rgba(0,0,0,.08);
+  transition: transform .25s ease, box-shadow .25s ease;
+  text-decoration:none;
+  color: var(--text);
+}
+
+.book-card:hover{
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0,0,0,.15);
+}
+
+/* KEY: make every cover exactly the same size */
+.book-card img{
+  width: 100%;
+  aspect-ratio: 2 / 3;   /* or 2 / 3 if you want book-ish ratio */
+  object-fit: cover;
+  display:block;
+}
+
+.book-card .book-text{
+  padding: 10px 12px 12px 12px;
+}
+
+.book-title{
+  font-size: 13px;
+  font-weight: 650;
+  line-height: 1.35;
+  margin: 0;
+}
+
+.book-author{
+  margin-top: 6px;
+  font-size: 12px;
+  color: var(--muted);
+}

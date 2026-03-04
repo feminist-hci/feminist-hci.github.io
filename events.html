@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Feminist HCI</title>
+<title>Feminist HCI — Events</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
@@ -81,27 +81,22 @@ a:hover { opacity: .75; text-decoration: underline; text-underline-offset: 3px; 
 
 /* ── Hero ── */
 .hero {
-  padding: 72px 0 52px;
+  padding: 64px 0 0;
   border-bottom: 1px solid var(--border);
   margin-bottom: 56px;
 }
 .hero-eyebrow {
   font-size: 12px; font-weight: 500;
   letter-spacing: 2.5px; text-transform: uppercase;
-  color: var(--accent); margin: 0 0 16px;
+  color: var(--accent); margin: 0 0 14px;
 }
 .hero h1 {
   font-family: var(--serif);
-  font-size: clamp(52px, 7.5vw, 96px);
-  line-height: 1.0; letter-spacing: -1.5px;
-  margin: 0 0 24px;
+  font-size: clamp(42px, 6vw, 72px);
+  line-height: 1.05; letter-spacing: -1px;
+  margin: 0 0 28px;
 }
 .hero h1 em { font-style: italic; color: var(--muted); }
-.hero-lede {
-  max-width: 58ch;
-  font-size: 17px; line-height: 1.8;
-  color: var(--muted); margin: 0; font-weight: 300;
-}
 
 /* ── Section labels ── */
 .section-label {
@@ -114,14 +109,21 @@ a:hover { opacity: .75; text-decoration: underline; text-underline-offset: 3px; 
   content: ''; flex: 1; height: 1px; background: var(--border); display: block;
 }
 
-/* ── News / events card ── */
-.news-section { margin-bottom: 56px; }
-.chi-banner {
-  display: flex; align-items: center; gap: 12px; margin-bottom: 20px;
+/* ── CHI section ── */
+.chi-section { margin-bottom: 56px; }
+
+.chi-header {
+  display: flex; align-items: center; gap: 14px;
+  margin-bottom: 22px;
 }
-.chi-banner img { height: 30px; opacity: .88; }
-.chi-banner span { font-size: 14px; color: var(--muted); }
-.chi-banner strong { color: var(--text); font-weight: 500; }
+.chi-header img { height: 30px; opacity: .88; }
+
+.date-pill {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: var(--accent-soft); color: var(--accent);
+  font-size: 12px; font-weight: 600; letter-spacing: .6px;
+  padding: 5px 12px; border-radius: 999px;
+}
 
 .events-card {
   background: var(--surface);
@@ -133,85 +135,82 @@ a:hover { opacity: .75; text-decoration: underline; text-underline-offset: 3px; 
 .events-card-header {
   padding: 16px 28px;
   border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; gap: 12px;
 }
-.date-pill {
-  display: inline-flex; align-items: center; gap: 6px;
-  background: var(--accent-soft); color: var(--accent);
-  font-size: 12px; font-weight: 600; letter-spacing: .6px;
-  padding: 5px 12px; border-radius: 999px;
+.events-card-venue {
+  font-size: 13px; color: var(--muted);
 }
+
 .event-row {
   display: grid; grid-template-columns: 120px 1fr;
   gap: 20px; align-items: start;
-  padding: 22px 28px;
+  padding: 24px 28px;
   border-bottom: 1px solid var(--border);
   transition: background .15s;
 }
 .event-row:last-child { border-bottom: none; }
 .event-row:hover { background: rgba(26,23,20,.02); }
+
 .event-time {
   font-size: 12px; font-weight: 600;
   letter-spacing: .5px; color: var(--accent);
-  font-variant-numeric: tabular-nums; padding-top: 2px;
+  font-variant-numeric: tabular-nums; padding-top: 3px;
 }
 .event-name {
   font-family: var(--serif);
-  font-size: 17px; line-height: 1.35; margin: 0 0 5px;
+  font-size: 18px; line-height: 1.35; margin: 0 0 6px;
 }
 .event-name a { color: var(--text); }
 .event-name a:hover { color: var(--accent); opacity: 1; text-decoration: none; }
 .event-room { font-size: 12px; color: var(--muted); }
 
-/* ── About ── */
-.about-section { margin-bottom: 64px; }
-.about-grid {
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: 20px; align-items: stretch;
-}
-@media (max-width: 680px) { .about-grid { grid-template-columns: 1fr; } }
-
-.about-text {
+/* ── Reading group ── */
+.rg-section { margin-bottom: 64px; }
+.rg-card {
   background: var(--surface);
-  border: 1px solid var(--border);
+  border: 1px solid var(--border-strong);
   border-radius: var(--radius-lg);
-  padding: 32px; box-shadow: var(--shadow-sm);
-}
-.about-text p {
-  font-size: 16px; line-height: 1.85;
-  color: var(--muted); margin: 0 0 14px; font-weight: 300;
-}
-.about-text p:last-child { margin: 0; }
-
-.about-links { display: flex; flex-direction: column; gap: 12px; }
-.nav-link-card {
-  display: flex; align-items: center; justify-content: space-between;
-  background: var(--surface); border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  padding: 22px 26px;
-  color: var(--text); text-decoration: none;
-  box-shadow: var(--shadow-sm);
-  transition: border-color .18s, box-shadow .18s, opacity .15s;
-  flex: 1;
-}
-.nav-link-card:hover {
-  border-color: rgba(192,57,43,.3);
+  padding: 36px 40px;
   box-shadow: var(--shadow);
-  opacity: 1; text-decoration: none;
+  position: relative; overflow: hidden;
+  display: grid; grid-template-columns: 1fr auto;
+  gap: 32px; align-items: center;
 }
-.nav-link-label {
+.rg-card::before {
+  content: '';
+  position: absolute; left: 0; top: 0; bottom: 0;
+  width: 3px; background: var(--accent);
+  border-radius: 0 2px 2px 0;
+}
+.rg-card-body {}
+.rg-card-label {
   font-size: 11px; font-weight: 600;
   letter-spacing: 2px; text-transform: uppercase;
-  color: var(--accent); margin-bottom: 4px;
+  color: var(--accent); margin: 0 0 8px;
 }
-.nav-link-title {
+.rg-card-title {
   font-family: var(--serif);
-  font-size: 20px; line-height: 1.2; color: var(--text);
+  font-size: 24px; line-height: 1.2;
+  color: var(--text); margin: 0 0 12px;
 }
-.nav-link-arrow {
-  font-size: 22px; color: var(--muted);
-  transition: transform .2s, color .2s; flex-shrink: 0;
+.rg-card-desc {
+  font-size: 15px; line-height: 1.7;
+  color: var(--muted); margin: 0;
 }
-.nav-link-card:hover .nav-link-arrow { transform: translateX(5px); color: var(--accent); }
+.rg-card-desc a { color: var(--accent); }
+.rg-cta {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 13px; font-weight: 500;
+  color: var(--accent);
+  border: 1px solid rgba(192,57,43,.25);
+  padding: 9px 18px; border-radius: 999px;
+  white-space: nowrap; flex-shrink: 0;
+  transition: background .15s;
+}
+.rg-cta:hover {
+  background: var(--accent-soft);
+  text-decoration: none; opacity: 1;
+}
 
 /* ── Footer ── */
 .footer {
@@ -224,9 +223,9 @@ a:hover { opacity: .75; text-decoration: underline; text-underline-offset: 3px; 
   from { opacity: 0; transform: translateY(16px); }
   to   { opacity: 1; transform: translateY(0); }
 }
-.hero          { animation: fadeUp .55s ease both; }
-.news-section  { animation: fadeUp .55s .10s ease both; }
-.about-section { animation: fadeUp .55s .20s ease both; }
+.hero        { animation: fadeUp .55s ease both; }
+.chi-section { animation: fadeUp .55s .10s ease both; }
+.rg-section  { animation: fadeUp .55s .20s ease both; }
 </style>
 </head>
 <body>
@@ -235,8 +234,8 @@ a:hover { opacity: .75; text-decoration: underline; text-underline-offset: 3px; 
   <div class="container nav-inner">
     <a class="brand" href="index.html">Feminist HCI</a>
     <nav class="nav-links" aria-label="Primary">
-      <a class="active" href="index.html">Home</a>
-      <a href="events.html">Events</a>
+      <a href="index.html">Home</a>
+      <a class="active" href="events.html">Events</a>
       <a href="resources.html">Resources</a>
     </nav>
   </div>
@@ -245,28 +244,27 @@ a:hover { opacity: .75; text-decoration: underline; text-underline-offset: 3px; 
 <main class="container">
 
   <section class="hero">
-    <p class="hero-eyebrow">Community · Research · Solidarity</p>
-    <h1>Feminist<br><em>HCI</em></h1>
-    <p class="hero-lede">
-      A community for researchers and practitioners exploring feminist approaches to
-      human–computer interaction: building with care, critiquing power, and growing
-      solidarities across contexts.
-    </p>
+    <p class="hero-eyebrow">Gatherings</p>
+    <h1>Events &amp; <em>meet-ups</em></h1>
   </section>
 
-  <section class="news-section">
-    <p class="section-label">News</p>
-    <div class="chi-banner">
+  <!-- CHI 2026 -->
+  <section class="chi-section">
+    <p class="section-label">CHI 2026</p>
+
+    <div class="chi-header">
       <img src="assets/CHI26logo.png" alt="CHI 2026">
-      <span>Two meet-ups at <strong>CHI 2026</strong>, Barcelona.</span>
+      <span class="date-pill">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        April 16, 2026
+      </span>
     </div>
+
     <div class="events-card">
       <div class="events-card-header">
-        <span class="date-pill">
-          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-          April 16, 2026
-        </span>
+        <span class="events-card-venue">Barcelona, Spain</span>
       </div>
+
       <div class="event-row">
         <div class="event-time">14:15 – 15:45</div>
         <div>
@@ -278,6 +276,7 @@ a:hover { opacity: .75; text-decoration: underline; text-underline-offset: 3px; 
           <div class="event-room">Room 132</div>
         </div>
       </div>
+
       <div class="event-row">
         <div class="event-time">16:30 – 18:00</div>
         <div>
@@ -292,36 +291,22 @@ a:hover { opacity: .75; text-decoration: underline; text-underline-offset: 3px; 
     </div>
   </section>
 
-  <section class="about-section">
-    <p class="section-label">About</p>
-    <div class="about-grid">
-      <div class="about-text">
-        <p>
-          Feminist HCI is a growing community of researchers and practitioners
-          exploring feminist approaches to human–computer interaction.
-        </p>
-        <p>
-          We organize meetups, reading groups, and conversations across regions
-          to support feminist scholarship, collaboration, and community
-          building in HCI.
+  <!-- Reading Group -->
+  <section class="rg-section">
+    <p class="section-label">Ongoing</p>
+    <div class="rg-card">
+      <div class="rg-card-body">
+        <p class="rg-card-label">Monthly</p>
+        <h2 class="rg-card-title">Reading Group</h2>
+        <p class="rg-card-desc">
+          We host a monthly Feminist HCI reading group in Chinese.
+          To join, please contact <a href="mailto:runhua.zhang@connect.ust.hk">Runhua Zhang</a>.
         </p>
       </div>
-      <div class="about-links">
-        <a class="nav-link-card" href="events.html">
-          <div>
-            <div class="nav-link-label">Upcoming</div>
-            <div class="nav-link-title">Events</div>
-          </div>
-          <span class="nav-link-arrow">→</span>
-        </a>
-        <a class="nav-link-card" href="resources.html">
-          <div>
-            <div class="nav-link-label">Reading list</div>
-            <div class="nav-link-title">Resources</div>
-          </div>
-          <span class="nav-link-arrow">→</span>
-        </a>
-      </div>
+      <a class="rg-cta" href="mailto:runhua.zhang@connect.ust.hk">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        Get in touch
+      </a>
     </div>
   </section>
 
